@@ -5,22 +5,17 @@ import os.path
 from bs4 import BeautifulSoup
 
 
-'''
-Created on Jun 3, 2016
-
-@author: zqlu
-'''
-
 def getHtml(url):
+    '''
+    get html data using url method
+    '''
     page = urllib.urlopen(url)
     html= page.read()
     return html
 
 def getMp3(html):
     '''
-    exreg = r'a id=\"mp3\" href=\"(.+\.mp3)\"'
-    mp3 = re.compile(exreg)
-    mp3list = re.findall(mp3,html)
+    get mp3 url path for a specific html
     '''
     mp3list = []
     soup = BeautifulSoup(html,'lxml')
@@ -30,7 +25,9 @@ def getMp3(html):
 
 
 def saveData(url):
-    
+    '''
+    download mp3 and write the txt file
+    '''
     html = getHtml(url)
     soup = BeautifulSoup(html,'lxml')
     mp3list = getMp3(html)
@@ -88,22 +85,9 @@ def getAll(src):
         print child
     """ 
     
-
-        
-        
-        
-        
-    
-
 #print html
 if __name__ == '__main__':
-    """
-    src = "http://www.51voa.com/VOA_Special_English/clinton-calls-trump-unfit-to-lead-foreign-policy-69904.html"
-    html = getHtml(src)
-    mp3list = getMp3(html)
-    saveData(mp3list, src)
-    print mp3list
-    """
+
     src = "http://www.51voa.com/VOA_Standard_1.html"
     urls = getAll(src)
     for url in urls:
