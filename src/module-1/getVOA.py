@@ -73,9 +73,9 @@ def getAll(src):
             res.append(href)
             print href
             
-    if len(res) >= 20:
+    if len(res) >= 5:
         #  if the mp3 number is larger than 20, then we just download 20 mp3s.
-        res = res[:20]
+        res = res[:5]
     
     return res
     """
